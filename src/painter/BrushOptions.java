@@ -32,6 +32,7 @@ public class BrushOptions extends GraphicsGroup {
         sizeField.setText(String.valueOf(initialSize));
 
         setColor(initialColor);
+        brushSize = initialSize;
     }
 
     private TextField addComponentField(String label, GraphicsObject positionAfter, int margin) {
