@@ -8,6 +8,8 @@ In this lab, we are practicing:
 
 In this lab, you build up a paint program from basic building blocks.
 
+<img src="doc/images/finished-project.png" width="512">
+
 
 ## Step 0: Understand your starting point
 
