@@ -6,7 +6,7 @@ In this lab, we are practicing:
 - **Refactoring**: changing the design of existing code without changing its functionality.
 - **Iterative development**: building up complex software in small, testable steps, adjusting the structure of the code as we go.
 
-In this lab, you build up a paint program from basic building blocks.
+In this lab, you build up a simple paint program.
 
 <img src="doc/images/finished-project.png" width="512">
 
