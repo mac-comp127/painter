@@ -143,7 +143,7 @@ But wait…. Try dragging the eraser over the brush buttons on the left of the s
 That’s OK. This is progress! ✅ Commit your work, and then you can fix the bug.
 
 
-# Step 7: Fix the eraser
+## Step 7: Fix the eraser
 
 The problem is that when you call `getElementAt()`, you remove _any_ element you find — including the buttons!
 
@@ -169,7 +169,7 @@ Once you have made that change, all the brushes will work entirely within `paint
 Test well, make sure it works properly, then ✅ commit your work.
 
 
-# Step 8: Give the brushes names
+## Step 8: Give the brushes names
 
 You’re almost there! In this last step, you get a good feel for what iterative development really feels like in practice.
 
@@ -186,7 +186,7 @@ Run the program. You should now have a UI with three buttons with different name
 Test well, make sure it works properly, and **enjoy your excellent work!** Then ✅ commit it.
 
 
-# Bonus: Make additional brushes
+## Bonus: Make additional brushes
 
 You know you want to, right? Of course you do. Be inventive! Have fun!
 
