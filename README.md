@@ -147,7 +147,7 @@ That’s OK. This is progress! ✅ Commit your work, and then you can fix the bu
 
 The problem is that when you call `getElementAt()`, you remove _any_ element you find — including the buttons!
 
-(Aside: note that the eraser does _not_ remove the color and brush size UI elements. Why not? They are not directly inside the canvas; they are all inside a `GraphicsGroup` inside the canvas — a child of a child of the canvas. The `getElementAt()` method will look inside groups, but the `remove()` method only allow you to remove immediate children. So the canvas says, “Sorry, I don’t have that element!” and nothing happens.)
+> Aside: Note that the eraser does _not_ remove the color and brush size UI elements. Why not? They are not directly inside the canvas; they are all inside a `GraphicsGroup` inside the canvas — a child of a child of the canvas. The `getElementAt()` method will look inside groups, but the `remove()` method only allow you to remove immediate children. So the canvas says, “Sorry, I don’t have that element!” and nothing happens.
 
 One solution would be to try to look at the matched element and figure out whether it is part of the painting or part of the controls. But that would be a *brittle change*: we want to be able to add new kinds of controls and new kinds of brushes, without constantly having to worry about making sure the eraser correctly identifies which is which.
 
@@ -163,6 +163,12 @@ canvas.add(paintLayer);
 Now find the call to `currentBrush.apply()`, and change the `canvas` parameter to `paintLayer`.
 
 Oops! This breaks! Why? Because `CanvasWindow` is not a `GraphicsGroup`. That means you need to change the `Brush` interface — and all the classes that implement it — so they take a `GraphicsGroup` instead of a canvas.
+
+> Aside: This is a bunch of work, isn’t it? Wouldn’t it be great if we’d done it this way from the beginning? You may be tempted to think, “If only we’d foreseen this bug! If only we’d planned more!” And it’s true, that would have been nice, and planning is good. But foreseeing all problems in software is a fool’s errand.
+>
+> It is more important to have a clear sense of purpose and a constant feedback loop than it is to plan every technical detail perfectly from the beginning. In fact, overanticipating possible future needs that never materialize is the undoing of many a software project!
+>
+> Focus on sensible, achievable steps that work toward a clear goal. Test along the way, and be ready to adjust. Perfect foresight is not possible, but flexibility and common sense are.
 
 Once you have made that change, all the brushes will work entirely within `paintLayer`. You should still be able to paint and erase as before, but the eraser should no longer remove any buttons.
 
