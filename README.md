@@ -81,7 +81,7 @@ Test well, make sure it works properly, then ✅ commit your work. Be sure to co
 
 ## Step 3: Extract `Brush` interface
 
-Now make `Brush` an interface with the `apply()` method, and `SprayPaint` the one class the implements it.
+Now make `Brush` an interface with the `apply()` method, and `SprayPaint` the one class that implements it.
 
 In `PainterApp`, the type of `currentBrush` should still be `Brush`, but now you initialize it with a new `SprayPaint` object:
 
@@ -89,7 +89,7 @@ In `PainterApp`, the type of `currentBrush` should still be `Brush`, but now you
 private Brush currentBrush = new SprayPaint();
 ```
 
-Once this refactoring is done, everything should _still_ behave exactly as before. But now are ready for multiple kinds of brushes.
+Once this refactoring is done, everything should _still_ behave exactly as before. But now we are ready for multiple kinds of brushes.
 
 Test well, make sure it works properly, then ✅ commit your work.
 
@@ -100,7 +100,7 @@ You will create a new implementation of `Brush` that draws thin unfilled circles
 
 You are welcome to figure this out on your own if things are going quickly and you want a challenge. If you are pressed for time, you are also welcome to [copy this implementation](https://gist.github.com/pcantrell/cf2106d0d734afd805c17fae63a2efcc) into your project.
 
-Try making `PainterApp` use your new brush instead of the old one. You should be able to do this by doing _nothing at all_ except changing `new SprayPaint()` to `new CirclesBrush()` (or whatever you called the new brush class).
+Try making `PainterApp` use your new brush instead of the old one. You should be able to do this by doing nothing except changing `new SprayPaint()` to `new CirclesBrush()` (or whatever you called the new brush class).
 
 You should now see circles instead of the spray paint effect.
 
@@ -116,7 +116,7 @@ In `PainterApp`, create a new method `addBrushButton(Brush brush, double y)` tha
 - Add it to the canvas.
 - Make it so that when the user clicks it, it sets `currentBrush` to this brush.
 
-Add a new instance variable called `availableBrushes` that is `List` of `Brush` objects. Put one instance of each of your two brushes in the list.
+Add a new instance variable called `availableBrushes` that is a `List` of `Brush` objects. Put one instance of each of your two brushes in the list.
 
 In the constructor, loop over `availableBrushes` and call `addBrushButton()` for each one. (Be sure to pass different `y` coordinates so they aren’t all on top of each other.)
 
@@ -136,9 +136,9 @@ Make a new implementation of `Brush` called `Eraser`.
 
 This should take just a little bit of code.
 
-Add `Eraser` to the end of `availableBrushes`, and try it out! You should be able to paint something, then switch to the eraser by clicking the appropriate button and erase parts of it. Yay!
+Add `Eraser` to the end of `availableBrushes`, and try it out! You should be able to paint something, then switch to the eraser by clicking the appropriate button and erase parts of what you painted. Yay!
 
-But wait…. Try dragging the eraser over the brush buttons on the left of the screen. Oops.
+But wait…. Try dragging the eraser over the “Change Brush” buttons on the left of the screen. Oops.
 
 That’s OK. This is progress! ✅ Commit your work, and then you can fix the bug.
 
@@ -147,7 +147,7 @@ That’s OK. This is progress! ✅ Commit your work, and then you can fix the bu
 
 The problem is that when you call `getElementAt()`, you remove _any_ element you find — including the buttons!
 
-> Aside: Note that the eraser does _not_ remove the color and brush size UI elements. Why not? They are not directly inside the canvas; they are all inside a `GraphicsGroup` inside the canvas — a child of a child of the canvas. The `getElementAt()` method will look inside groups, but the `remove()` method only allow you to remove immediate children. So the canvas says, “Sorry, I don’t have that element!” and nothing happens.
+> Aside: Note that the eraser does _not_ remove the color and brush size UI elements. Why not? They are not directly inside the canvas; they are all inside a `GraphicsGroup` inside the canvas — a child of a child of the canvas. The `getElementAt()` method will look for children of children inside groups, but the `remove()` method only allow you to remove immediate children. So the canvas says, “Sorry, I don’t have that element!” and nothing happens.
 
 One solution would be to try to look at the matched element and figure out whether it is part of the painting or part of the controls. But that would be a *brittle change*: we want to be able to add new kinds of controls and new kinds of brushes, without constantly having to worry about making sure the eraser correctly identifies which is which.
 
@@ -170,7 +170,7 @@ Oops! This breaks! Why? Because `CanvasWindow` is not a `GraphicsGroup`. That me
 >
 > Focus on sensible, achievable steps that work toward a clear goal. Test along the way, and be ready to adjust. Perfect foresight is not possible, but flexibility and common sense are.
 
-Once you have made that change, all the brushes will work entirely within `paintLayer`. You should still be able to paint and erase as before, but the eraser should no longer remove any buttons.
+Once you have made that change, all the brushes will work entirely within `paintLayer`. You should still be able to paint and erase as before, but the eraser should no longer remove any buttons. (And as a side bonus, you can no longer paint over the color preview square in the upper left! Did you notice that bug? It’s fixed now too.)
 
 Test well, make sure it works properly, then ✅ commit your work.
 
