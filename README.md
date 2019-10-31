@@ -24,7 +24,7 @@ You start with the following classes:
 
 You should understand the **API and general purpose** of the other classes, but you do **not** need to understand how they are implemented. (You are of course welcome to read through them! But don’t get bogged down in the details. Let abstraction do its job.)
 
-Try running the code. You should see a user interface for choosing a color and brush size. You should also see a single fuzzy blue dot on the screen — but it just sits there doesn’t do anything.
+Try running the code. You should see a user interface for choosing a color and brush size. You should also see a single fuzzy blue dot on the screen — but it just sits there and doesn’t do anything.
 
 
 ## Step 1: Response to mouse events
@@ -68,15 +68,15 @@ Add an instance variable called `currentBrush` to `PainterApp`. Initialize it wi
 
 Now move some — but not all! — of the contents of the `PainterApp.paint()` method into `Brush.apply()`. Which parts should move? What parameters should `apply()` take? You need to figure this out. Guidelines:
 
-- Any specifics about what the brush _does_ should be in the brush class. `PainterApp` will ask the brush to apply itself to the canvas without knowing anything about how the brush works.
-- Any specifics about what UI components are on the screen should be in `PainterApp`. The brush should know it is applying itself to some canvas, but it should not know anything about specific UI components that are on the screen.
+- Any specifics about what the brush _does_ should be in the `Brush` class. The main app will ask the brush to apply itself to the canvas without knowing anything specific about how the brush works.
+- Any specifics about what UI components are on the screen should be in `PainterApp`. The brush should know it is applying itself to some canvas, but it should not know anything else about how the UI is organized.
 - Any information the brush needs to apply itself to the canvas, the `apply()` method should accept as a parameter. Again, `Brush` should have no instance variables.
 
 Think about how to extract the class, and ask for tips if you are unsure.
 
 Once this refactoring is done, you should still be able to paint exactly as before.
 
-Test well, make sure it works properly, then ✅ commit your work.
+Test well, make sure it works properly, then ✅ commit your work. Be sure to commit the newly created class! IntelliJ might put it in a separate “untracked files” section. Don’t let it hide there!
 
 
 ## Step 3: Extract `Brush` interface
@@ -98,7 +98,7 @@ Test well, make sure it works properly, then ✅ commit your work.
 
 You will create a new implementation of `Brush` that draws thin unfilled circles on the screen. Be sure to respect the brush color and brush radius.
 
-You are welcome to figure this out on your own if things are going super quickly and you want a challenge. If you are pressed for time, you are also welcome to [copy this implementation](https://gist.github.com/pcantrell/cf2106d0d734afd805c17fae63a2efcc) into your project.
+You are welcome to figure this out on your own if things are going quickly and you want a challenge. If you are pressed for time, you are also welcome to [copy this implementation](https://gist.github.com/pcantrell/cf2106d0d734afd805c17fae63a2efcc) into your project.
 
 Try making `PainterApp` use your new brush instead of the old one. You should be able to do this by doing _nothing at all_ except changing `new SprayPaint()` to `new CirclesBrush()` (or whatever you called the new brush class).
 
@@ -149,9 +149,9 @@ The problem is that when you call `getElementAt()`, you remove _any_ element you
 
 (Aside: note that the eraser does _not_ remove the color and brush size UI elements. Why not? They are not directly inside the canvas; they are all inside a `GraphicsGroup` inside the canvas — a child of a child of the canvas. The `getElementAt()` method will look inside groups, but the `remove()` method only allow you to remove immediate children. So the canvas says, “Sorry, I don’t have that element!” and nothing happens.)
 
-One solution would be to try to look at the matched element and figure out whether it is part of the painting or part of the controls. But that would be a *brittle change*: we want to be able to add new kinds of controls and new kinds of brushes, without constantly having to worry about making sure the eraser identifies which is which.
+One solution would be to try to look at the matched element and figure out whether it is part of the painting or part of the controls. But that would be a *brittle change*: we want to be able to add new kinds of controls and new kinds of brushes, without constantly having to worry about making sure the eraser correctly identifies which is which.
 
-A better solution is to put the entire painting inside a `GraphicsGroup`. That group will contain _only_ the painting and not the whole UI, so we can safely remove anything from it.
+A better solution is to put the entire painting inside a `GraphicsGroup`. That group will contain _only_ the painting and not the whole UI, so we can safely remove _anything_ from it.
 
 In `PainterApp`, add a new `GraphicsGroup` instance variable called `paintLayer`. In the constructor, initialize it and add it to the canvas:
 
@@ -177,7 +177,7 @@ It’s annoying that all the buttons have the same name, isn’t it? Let’s giv
 
 Add a `getName()` method to the `Brush` interface.
 
-Make each class that implements `Brush` implement that method by returning a different user-friendly string. (By “user friendly,” I mean for example that you should return `"Spray Paint"` with a space in it, so it sounds like something that is meaningful to an artist, not meaningful to a programmer.)
+Make each class that implements `Brush` implement that method by returning a different user-friendly string. (By “user friendly,” I mean that for example you should return `"Spray Paint"` with a space in it, so it sounds like something that is meaningful to a user/artist, not meaningful to a programmer.)
 
 When you call the `Button` constructor, instead of passing `"Change Brush"`, pass the brush’s name.
 
