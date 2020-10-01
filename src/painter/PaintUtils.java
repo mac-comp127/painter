@@ -1,9 +1,8 @@
 package painter;
 
-import comp127graphics.Ellipse;
-import comp127graphics.GraphicsGroup;
-import comp127graphics.GraphicsObject;
-import comp127graphics.Point;
+import edu.macalester.graphics.Ellipse;
+import edu.macalester.graphics.GraphicsObject;
+import edu.macalester.graphics.Point;
 
 import java.awt.Color;
 import java.awt.RadialGradientPaint;

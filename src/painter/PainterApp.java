@@ -1,8 +1,8 @@
 package painter;
 
-import comp127graphics.CanvasWindow;
-import comp127graphics.GraphicsObject;
-import comp127graphics.Point;
+import edu.macalester.graphics.CanvasWindow;
+import edu.macalester.graphics.GraphicsObject;
+import edu.macalester.graphics.Point;
 
 import java.awt.Color;
 

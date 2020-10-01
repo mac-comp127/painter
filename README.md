@@ -111,7 +111,7 @@ Test well, make sure it works properly, then ✅ commit your work.
 
 In `PainterApp`, create a new method `addBrushButton(Brush brush, double y)` that does the following:
 
-- Create a `Button` with the title “Change Brush”. (Make sure you have the`Button` from `comp127graphics`, and not a different `Button` class.)
+- Create a `Button` with the title “Change Brush”. (Make sure you have the`Button` from `kilt-graphics`, and not a different `Button` class.)
 - Position it at `10, y`.
 - Add it to the canvas.
 - Make it so that when the user clicks it, it sets `currentBrush` to this brush.

@@ -1,10 +1,10 @@
 package painter;
 
-import comp127graphics.GraphicsGroup;
-import comp127graphics.GraphicsObject;
-import comp127graphics.GraphicsText;
-import comp127graphics.Rectangle;
-import comp127graphics.ui.TextField;
+import edu.macalester.graphics.GraphicsGroup;
+import edu.macalester.graphics.GraphicsObject;
+import edu.macalester.graphics.GraphicsText;
+import edu.macalester.graphics.Rectangle;
+import edu.macalester.graphics.ui.TextField;
 
 import java.awt.Color;
 import java.util.function.Consumer;
