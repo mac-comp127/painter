@@ -76,7 +76,7 @@ Think about how to extract the class, and ask for tips if you are unsure.
 
 Once this refactoring is done, you should still be able to paint exactly as before.
 
-Test well, make sure it works properly, then ✅ commit your work. Be sure to commit the newly created class! IntelliJ might put it in a separate “untracked files” section. Don’t let it hide there!
+Test well, make sure it works properly, then ✅ commit your work. Be sure to commit the newly created class!
 
 
 ## Step 3: Extract `Brush` interface
@@ -189,7 +189,7 @@ When you call the `Button` constructor, instead of passing `"Change Brush"`, pas
 
 Run the program. You should now have a UI with three buttons with different names.
 
-Test well, make sure it works properly, and **enjoy your excellent work!** Then ✅ commit it.
+Test well, make sure it works properly, and **enjoy your excellent work** by creating some art! Then ✅ commit and push.
 
 
 ## Bonus: Make additional brushes
