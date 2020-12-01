@@ -37,7 +37,7 @@ public class PaintSettingsView extends GraphicsGroup {
     }
 
     private TextField addComponentField(String label, GraphicsObject positionAfter, int margin) {
-        double y = positionAfter.getBounds().getMaxY() + margin;
+        double y = positionAfter.getBoundsInParent().getMaxY() + margin;
 
         GraphicsText labelGraphics = new GraphicsText(label);
         labelGraphics.setPosition(-labelGraphics.getWidth() - 5, y);
