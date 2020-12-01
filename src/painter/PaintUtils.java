@@ -21,9 +21,9 @@ public class PaintUtils {
     public static GraphicsObject createFuzzyDot(Point location, Color color, float radius, double alpha) {
         Ellipse dot = new Ellipse(0, 0, radius * 2, radius * 2);
         RadialGradientPaint gradient = new RadialGradientPaint(
-            (float) location.getX(),
-            (float) location.getY(),
-            radius,
+            radius,  // center x
+            radius,  // center y
+            radius,  // radius
             new float[] { 0, 0.10f, 0.26f, 0.5f, 0.75f, 0.87f, 1 },
             new Color[] {
                 adjustTransparency(color, alpha * 1.00),  // semi-transparent in the middle
