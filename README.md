@@ -22,7 +22,7 @@ You start with the following classes:
 
 `PainterApp` is the only one of the existing classes you will modify in this lab.
 
-You should understand the **API and general purpose** of the other classes, but you do **not** need to understand how they are implemented. (You are of course welcome to read through them! But don’t get bogged down in the details. Let abstraction do its job.)
+You should understand the **public methods** and the **general purpose** of the other classes, but you do **not** need to understand how they are implemented. (You are of course welcome to read through them! But don’t get bogged down in the details. Let abstraction do its job. The point of abstraction is that you can add to or change existing code without needing to understand _everything_ about it!)
 
 Try running the code. You should see a user interface for choosing a color and brush size. You should also see a single fuzzy blue dot on the screen — but it just sits there and doesn’t do anything.
 
@@ -44,7 +44,7 @@ Test well, make sure it works properly, then ✅ commit your work.
 
 Your main goal in this lab is to support multiple brushes. You currently have a spray paint effect; you will add two more.
 
-The code is not yet ready for multiple brushes. You will get ready in two steps:
+The code is not yet ready for multiple brushes. You will get ready for that with the following two steps. (Not yet! We are looking ahead! This is a plan, not instructions!)
 
 1. Extract a separate `Brush` class from `PainterApp` that is responsible for nothing but placing the fuzzy dots.
 2. Convert that to a `SprayPaint` class that implements a `Brush` interface, and make `PainterApp` depend _only_ on the interface.
@@ -52,7 +52,7 @@ The code is not yet ready for multiple brushes. You will get ready in two steps:
 
 ## Step 2: Extract `Brush` class
 
-Let’s do just step 1. Keep in mind that for now, `Brush` will just be a class — not an interface!
+Let’s do just step 1. Keep in mind that for now, `Brush` will just be a class — not an interface!
 
 Create a new `Brush` class with **no instance variables**, and just one method named `apply`:
 
@@ -66,7 +66,7 @@ public class Brush {
 
 Add an instance variable called `currentBrush` to `PainterApp`. Initialize it with a new `Brush` object.
 
-Now move some — but not all! — of the contents of the `PainterApp.paint()` method into `Brush.apply()`. Which parts should move? What parameters should `apply()` take? You need to figure this out. Guidelines:
+Now move some — but not all! — of the contents of the `PainterApp.paint()` method into `Brush.apply()`. Which parts should move? What parameters should `apply()` take? You need to figure this out. This is a lot like the Cell Absorption exercise. Guidelines:
 
 - Any specifics about what the brush _does_ should be in the `Brush` class. The main app will ask the brush to apply itself to the canvas without knowing anything specific about how the brush works.
 - Any specifics about what UI components are on the screen should be in `PainterApp`. The brush should know it is applying itself to some canvas, but it should not know anything else about how the UI is organized.
@@ -83,11 +83,17 @@ Test well, make sure it works properly, then ✅ commit your work. Be sure to co
 
 Now make `Brush` an interface with the `apply()` method, and `SprayPaint` the one class that implements it.
 
-In `PainterApp`, the type of `currentBrush` should still be `Brush`, but now you initialize it with a new `SprayPaint` object:
+In `PainterApp`, the type of `currentBrush` should still be `Brush`, but now you initialize it with a new `SprayPaint` object. What is the syntax for that? Think, try it, then check your work:
 
-```java
-private Brush currentBrush = new SprayPaint();
-```
+<details>
+  <summary>
+    Expand this section to check your answer
+  </summary>
+
+  ```java
+  private Brush currentBrush = new SprayPaint();
+  ```
+</details>
 
 Once this refactoring is done, everything should _still_ behave exactly as before. But now we are ready for multiple kinds of brushes.
 
@@ -98,7 +104,24 @@ Test well, make sure it works properly, then ✅ commit your work.
 
 You will create a new implementation of `Brush` that draws thin unfilled circles on the screen. Be sure to respect the brush color and brush radius.
 
-You are welcome to figure this out on your own if things are going quickly and you want a challenge. If you are pressed for time, you are also welcome to [copy this implementation](https://gist.github.com/pcantrell/cf2106d0d734afd805c17fae63a2efcc) into your project.
+You have all the ingredients you need to figure out how to do this. If you’d like a hint, or want to check your work, here is a sketch of the new class in pseudocode:
+
+<details>
+  <summary>
+    Expand this section for pseudocode
+  </summary>
+
+  ```
+  declaration for the `CirclesBrush` class, which implements the `Brush` interface:
+    declaration for the `apply` method:
+        get radius from `brushOptions`
+        make a new circle with diameter of radius * 2
+        set the circle's stroke color from `brushOptions`
+        set the circle's stroke width to some fraction less than 1 (we want thin circles!)
+        set the circle's center to the location passed as a parameter
+        add the circle to the canvas
+  ```
+</details>
 
 Try making `PainterApp` use your new brush instead of the old one. You should be able to do this by doing nothing except changing `new SprayPaint()` to `new CirclesBrush()` (or whatever you called the new brush class).
 
@@ -147,7 +170,7 @@ That’s OK. This is progress! ✅ Commit your work, and then you can fix the bu
 
 The problem is that when you call `getElementAt()`, you remove _any_ element you find — including the buttons!
 
-> Aside: Note that the eraser does _not_ remove the color and brush size UI elements. Why not? They are not directly inside the canvas; they are all inside a `GraphicsGroup` inside the canvas — a child of a child of the canvas. The `getElementAt()` method will look for children of children inside groups, but the `remove()` method only allow you to remove immediate children. So the canvas says, “Sorry, I don’t have that element!” and nothing happens.
+> Aside: Note that the eraser does _not_ remove the color and brush size UI elements. Why not? They are not directly inside the canvas; they are all inside a `GraphicsGroup` inside the canvas — a child of a child of the canvas. The `getElementAt()` method will look for children of children inside groups, but the `remove()` method only allow you to remove immediate children. So the canvas says, “Sorry, I don’t have that element!” and nothing happens.
 
 One solution would be to try to look at the matched element and figure out whether it is part of the painting or part of the controls. But that would be a *brittle change*: we want to be able to add new kinds of controls and new kinds of brushes, without constantly having to worry about making sure the eraser correctly identifies which is which.
 
@@ -164,7 +187,7 @@ Now find the call to `currentBrush.apply()`, and change the `canvas` parameter t
 
 Oops! This breaks! Why? Because `CanvasWindow` is not a `GraphicsGroup`. That means you need to change the `Brush` interface — and all the classes that implement it — so they take a `GraphicsGroup` instead of a canvas.
 
-> Aside: This is a bunch of work, isn’t it? Wouldn’t it be great if we’d done it this way from the beginning? You may be tempted to think, “If only we’d foreseen this bug! If only we’d planned more!” And it’s true, that would have been nice, and planning is good. But foreseeing all problems in software is a fool’s errand.
+> Aside: This is a bunch of work, isn’t it? Wouldn’t it be great if we’d done it this way from the beginning? You may be tempted to think, “If only we’d foreseen this bug! If only we’d planned more!” And it’s true, that would have been nice, and planning is good. But foreseeing all problems in software is a fool’s errand.
 >
 > It is more important to have a clear sense of purpose and a constant feedback loop than it is to plan every technical detail perfectly from the beginning. In fact, overanticipating possible future needs that never materialize is the undoing of many a software project!
 >
