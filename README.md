@@ -1,12 +1,12 @@
 # Painter App
 
-In this lab, we are practicing:
+In this exercise, we are practicing:
 
 - **Event handling**: using button and mouse events to build an interactive application.
 - **Refactoring**: changing the design of existing code without changing its functionality.
 - **Iterative development**: building up complex software in small, testable steps, adjusting the structure of the code as we go.
 
-In this lab, you build up a simple paint program.
+In this exercise, you build up a simple paint program.
 
 <img src="doc/images/finished-project.png" width="512">
 
@@ -20,7 +20,7 @@ You start with the following classes:
 - `PaintSettingsView`: A UI component that allows a user to choose different `BrushOptions`.
 - `PaintUtils`: Helper functions for creating an airbrush / spray paint effect.
 
-`PainterApp` is the only one of the existing classes you will modify in this lab.
+`PainterApp` is the only one of the existing classes you will modify in this exercise.
 
 You should understand the **public methods** and the **general purpose** of the other classes, but you do **not** need to understand how they are implemented. (You are of course welcome to read through them! But don’t get bogged down in the details. Let abstraction do its job. The point of abstraction is that you can add to or change existing code without needing to understand _everything_ about it!)
 
@@ -42,7 +42,7 @@ Test well, make sure it works properly, then ✅ commit your work.
 
 ## Interlude: Let’s plan!
 
-Your main goal in this lab is to support multiple brushes. You currently have a spray paint effect; you will add two more.
+Your main goal in this exercise is to support multiple brushes. You currently have a spray paint effect; you will add two more.
 
 The code is not yet ready for multiple brushes. You will get ready for that with the following two steps. (Not yet! We are looking ahead! This is a plan, not instructions!)
 
