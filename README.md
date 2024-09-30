@@ -11,7 +11,7 @@ In this exercise, you build up a simple paint program.
 <img src="doc/images/finished-project.png" width="512">
 
 
-## Step 0: Understand your starting point
+## Step 0: Understand your starting point and creating a relationships diagram
 
 You start with the following classes:
 
@@ -26,6 +26,26 @@ You should understand the **public methods** and the **general purpose** of the 
 
 Try running the code. You should see a user interface for choosing a color and brush size. You should also see a single fuzzy blue dot on the screen — but it just sits there and doesn’t do anything.
 
+### Class structure and relationships
+
+After becoming acquainted with the starter code in the assignment, think further about the class structure and relationships. Please draw a diagram of the initial structure of the class relationships. A modeling diagram that contains boxes to represent classes with their names and arrows to point to the type of class relationship should suffice. Stuck on what to **actually draw**? See below for a hint.
+
+<details>
+  <summary>
+    Expand this section for your hint.
+  </summary>
+
+  ```
+    Think is-a and has-a relationships!
+
+  ```
+</details>
+
+When you are done, please upload your initial structure to the Moodle submission dropbox for the Painter Homework assignment. This can be completed in multiple ways! A paper sketch uploaded via image file or a digital version using a document or slide should suffice. (just make sure it's legible for us to read it!)
+
+Please name your file something meaningful and relevant like: yourlastname-hw3-sectionXX-diagram-v1.file-extension
+
+:warning: Keep your initial structure in mind. Towards the end of the assignment, you will be asked to create another diagram to represent the changes your class structure undergoes!
 
 ## Step 1: Response to mouse events
 
@@ -212,11 +232,24 @@ When you call the `Button` constructor, instead of passing `"Change Brush"`, pas
 
 Run the program. You should now have a UI with three buttons with different names.
 
-Test well, make sure it works properly, and **enjoy your excellent work** by creating some art! Then ✅ commit and push.
+Test well, make sure it works properly, then ✅ commit your work.
 
 
-## Bonus: Make additional brushes
+## Step 9: Be creative! Make additional brushes! 
 
 You know you want to, right? Of course you do. Be inventive! Have fun!
 
-Or, if you are overwhelmed, give yourself a breather. Maybe even make a painting.
+Please Note: Your new creations cannot just be a new shape!
+
+As usual, test well, make sure it works properly, and **enjoy your excellent work** by creating some MORE AWESOME art! Then ✅ commit and push.
+
+
+## Step 10: Revisiting your class diagram!
+
+Remember wayyyyyy at the beginning of this assignment, you were asked to create an initial diagram of the class structure and its relationships? Well, your final task (woohoo!) will be to draw an updated diagram with the new class structure and relationships that now appear. Sam style as the first one. Now review the new relationships and update your diagram accordingly!
+
+Again, upload your second diagram via Moodle submission dropbox for the Painter Homework assignment. 
+
+To distinguish your prior diagram and your updated one, use a similar naming convention (where now we use v2 for version 2): yourlastname-hw3-sectionXX-diagram-v2.file-extension
+
+Now, you should have **two** diagram file submissions on Moodle along with your pushed code. CONGRATULATIONS!
