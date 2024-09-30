@@ -11,7 +11,7 @@ In this exercise, you build up a simple paint program.
 <img src="doc/images/finished-project.png" width="512">
 
 
-## Step 0: Understand your starting point
+## Step 0: Understand your starting point and create a class diagram
 
 You start with the following classes:
 
@@ -26,6 +26,23 @@ You should understand the **public methods** and the **general purpose** of the 
 
 Try running the code. You should see a user interface for choosing a color and brush size. You should also see a single fuzzy blue dot on the screen — but it just sits there and doesn’t do anything.
 
+### Diagram the class relationships
+
+After becoming acquainted with the starter code in the assignment, think further about the class structure and relationships. Please draw a diagram showing the four classes listed above (`PainterApp`, `BrushOptions`, `PaintSettingsView`, and `PaintUtils`) with arrows between them showing the following three relationships (and _only_ those relationships):
+
+- **has-a**: one class holds a reference to another as part of its state
+- **is-a**: one class is a subtype of another
+- **creates**: one class creates a new instance of another
+
+Label every arrow in your diagram with the kind of relationship it denotes. (One arrow may have multiple labels.)
+
+Make sure your arrows point in the correct direction.
+
+When you are done with your diagram, please upload it to the Moodle submission dropbox for the Painter Homework assignment. You can submit a photo of a paper sketch, or a digital version created with a drawing program or a slide generator. Just make sure it’s legible enough for us to read it!
+
+Please use this name format for your file: `yourlastname-hw3-sectionXX-diagram-v1.file-extension`
+
+:warning: Keep your initial structure in mind. Towards the end of the assignment, you will be asked to create another diagram to represent the changes your class structure has undergone!
 
 ## Step 1: Response to mouse events
 
@@ -212,11 +229,39 @@ When you call the `Button` constructor, instead of passing `"Change Brush"`, pas
 
 Run the program. You should now have a UI with three buttons with different names.
 
-Test well, make sure it works properly, and **enjoy your excellent work** by creating some art! Then ✅ commit and push.
+Test well, make sure it works properly, then ✅ commit your work.
 
 
-## Bonus: Make additional brushes
+## Step 9: Be creative! Make additional brushes! 
 
 You know you want to, right? Of course you do. Be inventive! Have fun!
 
-Or, if you are overwhelmed, give yourself a breather. Maybe even make a painting.
+Rules for full credit:
+
+- You must create at least one new brush. (We’d be delighted if you create more!)
+- Your new creation cannot just be a minor modification of an existing brush. For example, merely making a `SquareBrush` that is just like `CircleBursh` except with a rectangle will **not** receive full credit.
+
+Not sure where to start, or what’s enough? Here are a few ideas:
+
+- A brush that stamps an image on the canvas
+- A brush that draws a cool shape of your own invention
+- A brush that draws a continuously rotating shape
+- A brush that draws spikes coming out from the mouse in random directions
+- A brush that makes a splatter pattern by drawing dots of random size offset from the mouse’s location by a random distance
+
+Try one of those ideas, or invent your own!
+
+As usual, test well, make sure it works properly, and **enjoy your excellent work** by creating some MORE AWESOME art! Then ✅ commit and push.
+
+
+## Step 10: Revisiting your class diagram!
+
+Remember wayyyyyy at the beginning of this assignment, you were asked to create an initial diagram of the class structure and its relationships? Well, your final task (woohoo!) will be to draw an updated diagram with the new class structure and relationships.
+
+Draw a diagram in the same style as the first one, now showing _all_ of the classes and interfaces in the `painter` package.
+
+Again, upload your second diagram via Moodle submission dropbox for the Painter Homework assignment. 
+
+To distinguish your prior diagram and your updated one, use a similar naming convention (where now we use v2 for version 2): `yourlastname-hw3-sectionXX-diagram-v2.file-extension`
+
+Now, you should have **two** diagram file submissions on Moodle, along with your code pushed to GitHub. If you have done all these things, CONGRATULATIONS!
