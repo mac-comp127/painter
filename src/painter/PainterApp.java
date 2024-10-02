@@ -1,7 +1,6 @@
 package painter;
 
 import edu.macalester.graphics.CanvasWindow;
-import edu.macalester.graphics.GraphicsObject;
 import edu.macalester.graphics.Point;
 
 import java.awt.Color;
@@ -16,19 +15,14 @@ public class PainterApp {
         paintSettingsView = new PaintSettingsView(Color.BLUE, 60);
         canvas.add(paintSettingsView, 10 - paintSettingsView.getBounds().getMinX(), 10);
 
-        paint(canvas.getCenter());  // TODO: Replace with event handlers that use mouse position
+        canvas.onMouseDown(event -> paint(event.getPosition()));
+        canvas.onDrag(event -> paint(event.getPosition()));
     }
 
     private void paint(Point location) {
         BrushOptions brushOptions = paintSettingsView.getBrushOptions();
 
-        GraphicsObject dot = PaintUtils.createFuzzyDot(
-            location,
-            brushOptions.getColor(),
-            brushOptions.getRadius(),
-            0.2f);
-        dot.setCenter(location);
-        canvas.add(dot);
+        // TODO: Add fuzzy dot to canvas (see instructions)
     }
 
     public static void main(String[] args) {

@@ -44,15 +44,48 @@ Please use this name format for your file: `yourlastname-hw3-sectionXX-diagram-v
 
 :warning: Keep your initial structure in mind. Towards the end of the assignment, you will be asked to create another diagram to represent the changes your class structure has undergone!
 
-## Step 1: Response to mouse events
+## Step 1: Draw some fuzzy dots
 
-Find the line in `PainterApp` that adds that single blue dot. (It is marked with a TODO.) Replace it with an `onMouseDown` event handler that calls `paint()` with the event’s position.
+We have given you some starting code for the paint program's user interface. It’s missing one crucial thing: it doesn’t paint! We have also given you some code to create fuzzy dots. By creating many of these fuzzy dots and placing them on the screen as the user drags the mouse, you will create a spray paint effect.
 
-Run the code. The canvas should start blank, and you should be able to stamp dots on the screen by clicking. You should be able to change the color and size of the new dots using the controls on the left.
+Open up `PainterApp` and look at the `paint` method. That method will be called repeatedly with different locations as the mouse moves. (That part already works.) Your job: make it create **one** fuzzy dot every time it is called, and place the dot on the canvas at `location`.
 
-Now add a _second_ event handler that is identical to the first, except that it responds to **drag events** instead of mouse down events.
+Here is an outline of the code you need to write to replace the TODO:
 
-Run the code again, and you should be able to drag the mouse across the canvas to make a painting!
+- Call the `createFuzzyDot` method in `PaintUtils` to create one dot:
+  - Use the color from `brushOptions`
+  - Use the radius from `brushOptions`
+  - Use an alpha of `0.2f` (the `f` means the constant is a float instead of a double)
+- Set the center of the dot to `location`
+- Add the dot to the canvas
+
+Here are some hints to help you get started:
+
+<details>
+  <summary>
+    How do I call <code>createFuzzyDot</code>?
+  </summary>
+
+  It is a static method. How do you call a static method of another class? (The test classes in both HW0 and HW1 have examples of this.)
+</details>
+
+<details>
+  <summary>
+    How do I know what parameters <code>createFuzzyDot</code> takes, and what they mean?
+  </summary>
+
+  Open up `PaintUtils.java` and read the documentation!
+</details>
+
+<details>
+  <summary>
+    I see that <code>location</code> is a <code>Point</code> object, but I don’t know how to use that. How do I set the center of the dot to <code>location</code>?
+  </summary>
+
+  What is the return type of `createFuzzyDot`? That class has a method for setting the center that accepts a `Point`.
+</details>
+
+Don’t forget to delete the TODO comment!
 
 Test well, make sure it works properly, then ✅ commit your work.
 
@@ -154,7 +187,13 @@ In `PainterApp`, create a new method `addBrushButton(Brush brush, double y)` tha
 - Create a `Button` with the title “Change Brush”. (Make sure you have the`Button` from `kilt-graphics`, and not a different `Button` class.)
 - Position it at `10, y`.
 - Add it to the canvas.
-- Make it so that when the user clicks it, it sets `currentBrush` to this brush.
+- Make it so that when the user clicks it, it sets `currentBrush` to this brush. We haven’t yet covered in class how to make buttons clickable, so here is the Java syntax you need:
+
+  ```java
+  button.onClick(() -> {
+    // Put your code here to change `currentBrush` to the button’s brush
+  });
+  ```
 
 Add a new instance variable called `availableBrushes` that is a `List` of `Brush` objects. Put one instance of each of your two brushes in the list.
 
