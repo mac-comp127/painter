@@ -2,7 +2,6 @@ package painter;
 
 import edu.macalester.graphics.Ellipse;
 import edu.macalester.graphics.GraphicsObject;
-import edu.macalester.graphics.Point;
 
 import java.awt.Color;
 import java.awt.RadialGradientPaint;
