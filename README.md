@@ -62,27 +62,27 @@ Here is an outline of the code you need to write to replace the TODO:
 Here are some hints to help you get started:
 
 <details>
-  <summary><p>🔹
+  <summary>🔹
     How do I call <code>createFuzzyDot</code>?
-  </p></summary>
+  </summary>
 
-  It is a static method. How do you call a static method of another class? (The test classes in both HW0 and HW1 have examples of this.)
+  > It is a static method. How do you call a static method of another class? (The test classes in both HW0 and HW1 have examples of this.)
 </details>
 
 <details>
-  <summary><p>🔹
+  <summary>🔹
     How do I know what parameters <code>createFuzzyDot</code> takes, and what they mean?
-  </p></summary>
+  </summary>
 
-  Open up `PaintUtils.java` and read the documentation!
+  > Open up `PaintUtils.java` and read the documentation!
 </details>
 
 <details>
-  <summary><p>🔹
+  <summary>🔹
     I see that <code>location</code> is a <code>Point</code> object, but I don’t know how to use that. How do I set the center of the dot to <code>location</code>?
-  </p></summary>
+  </summary>
 
-  What is the return type of `createFuzzyDot`? That class has a method for setting the center that accepts a `Point`.
+  > What is the return type of `createFuzzyDot`? That class has a method for setting the center that accepts a `Point`.
 </details>
 
 Don’t forget to delete the TODO comment!
@@ -136,9 +136,9 @@ Now make `Brush` an interface with the `apply()` method, and `SprayPaint` the on
 In `PainterApp`, the type of `currentBrush` should still be `Brush`, but now you initialize it with a new `SprayPaint` object. What is the syntax for that? Think, try it, then check your work:
 
 <details>
-  <summary><p>🔹
+  <summary>🔹
     Expand this section to check your answer
-  </p></summary>
+  </summary>
 
   ```java
   private Brush currentBrush = new SprayPaint();
@@ -157,9 +157,9 @@ You will create a new implementation of `Brush` that draws thin unfilled circles
 You have all the ingredients you need to figure out how to do this. If you’d like a hint, or want to check your work, here is a sketch of the new class in pseudocode:
 
 <details>
-  <summary><p>🔹
+  <summary>🔹
     Expand this section for pseudocode
-  </p></summary>
+  </summary>
 
   ```
   declaration for the `CirclesBrush` class, which implements the `Brush` interface:
