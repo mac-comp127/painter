@@ -131,9 +131,21 @@ Test well, make sure it works properly, then ✅ commit your work. Be sure to co
 
 ## Step 3: Extract `Brush` interface
 
-Now make `Brush` an interface with the `apply()` method, and `SprayPaint` the one class that implements it.
+**Remember what your goal is:** take a moment to review the “Interlude: Let’s plan!” section above.
 
-In `PainterApp`, the type of `currentBrush` should still be `Brush`, but now you initialize it with a new `SprayPaint` object. What is the syntax for that? Think, try it, then check your work:
+Now turn `Brush` into an interface with the appropriate `apply(...)` method, and make a new `SprayPaint` class that applies the spray-painting effect. `SprayPaint` will be the one class (so far) that implements the `Brush` interface.
+
+To do this, you will need to _move_ some existing code. What code will be new? What will move?
+
+<details>
+  <summary>🔹
+    Think first, then expand this hint
+  </summary>
+
+  > All the existing code that you have in `Brush` will move into the new `SprayPaint` class. The `Brush` interface is a whole new piece that did not exist before.
+</details>
+
+In `PainterApp`, the type of `currentBrush` should still be `Brush`, but now you initialize it with a new `SprayPaint` object. What is the syntax for that? Think first, try it, then check your work:
 
 <details>
   <summary>🔹
